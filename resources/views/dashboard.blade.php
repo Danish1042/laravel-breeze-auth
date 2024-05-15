@@ -9,6 +9,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    {{-- {{Auth::user()->hasRole('user')}} --}}
+                    {{Auth::user()->hasVerifiedEmail()}}
+                    @role('admin')
+                    <!-- Content visible only to users with the 'admin' role -->
+                    <p>Welcome, Admin!</p>
+                @else
+                    <!-- Content for users without the 'admin' role -->
+                    <p>You are not an admin.</p>
+                @endrole
                     {{ __("You're logged in!") }}
                 </div>
             </div>
